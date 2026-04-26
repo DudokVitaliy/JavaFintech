@@ -2,6 +2,7 @@ package org.example.services;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dtos.category.CategoryItemDTO;
+import org.example.entities.CategoryEntity;
 import org.example.mappers.CategoryMapper;
 import org.example.repositories.ICategoryRepository;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class CategoryService {
 
     private final ICategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
+    private final ImageService imageService;
 
     public List<CategoryItemDTO> getAll() {
         return categoryRepository.findAll()
@@ -31,7 +33,14 @@ public class CategoryService {
     }
 
     public void save(CategoryItemDTO dto) {
-        var entity = categoryMapper.toEntity(dto);
+
+        CategoryEntity entity = categoryMapper.toEntity(dto);
+
+        if (dto.getImage() != null && dto.getImage().startsWith("http")) {
+            String fileName = imageService.downloadFromUrl(dto.getImage());
+            entity.setImage(fileName);
+        }
+
         categoryRepository.save(entity);
     }
 

@@ -9,7 +9,6 @@
     <main class="pt-4">
         <div class="container">
 
-            <!-- Header -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Categories</h2>
                 <a th:href="@{/categories/add}" class="btn btn-success">
@@ -17,12 +16,10 @@
                 </a>
             </div>
 
-            <!-- Empty state -->
             <div th:if="${#lists.isEmpty(categories)}" class="alert alert-info">
                 No categories found. Create your first one.
             </div>
 
-            <!-- Categories grid -->
             <div class="row" th:if="${!#lists.isEmpty(categories)}">
 
                 <div class="col-md-4 mb-4"
@@ -30,13 +27,11 @@
 
                     <div class="card h-100 shadow-sm">
 
-                        <!-- Image -->
                         <img th:src="@{'/images/large/' + ${category.image}}"
                              class="card-img-top"
                              style="height: 200px; object-fit: cover;"
                              alt="Category image">
 
-                        <!-- Body -->
                         <div class="card-body d-flex flex-column">
 
                             <h5 class="card-title"
@@ -45,10 +40,8 @@
                             <p class="card-text text-muted mb-3"
                                th:text="${category.slug}"></p>
 
-                            <!-- Actions -->
                             <div class="mt-auto d-flex justify-content-between">
 
-                                <!-- Edit -->
                                 <a th:href="@{'/categories/edit/' + ${category.id}}"
                                    class="btn btn-warning btn-sm">
                                     Edit
