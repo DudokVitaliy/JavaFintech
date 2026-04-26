@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
+
     private final ICategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
 
@@ -20,5 +21,21 @@ public class CategoryService {
                 .stream()
                 .map(categoryMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public CategoryItemDTO getById(Long id) {
+        var category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        return categoryMapper.toDto(category);
+    }
+
+    public void save(CategoryItemDTO dto) {
+        var entity = categoryMapper.toEntity(dto);
+        categoryRepository.save(entity);
+    }
+
+    public void delete(Long id) {
+        categoryRepository.deleteById(id);
     }
 }
