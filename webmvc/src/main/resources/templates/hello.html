@@ -1,13 +1,103 @@
-<html
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="layout">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
 <body>
 
-<div layout:fragment="content"
-     class="d-flex justify-content-center align-items-center"
-     style="min-height: 80vh">
-    <h1>Головна сторінка</h1>
+<div layout:fragment="content">
+
+    <!-- HERO -->
+    <div class="bg-dark text-white text-center py-5 mb-4">
+        <div class="container">
+
+            <h1 class="display-3 fw-bold">🥓 Світ Сала</h1>
+
+            <p class="lead mt-3">
+                Найсерйозніший IT-проєкт України про найважливіший продукт людства
+            </p>
+
+            <a th:href="@{/categories/list}" class="btn btn-warning btn-lg mt-3">
+                Перейти до каталогу сала
+            </a>
+
+        </div>
+    </div>
+
+    <!-- STORY -->
+    <div class="container mb-5">
+
+        <div class="card shadow border-0">
+            <div class="card-body p-4">
+
+                <h2 class="mb-3">📜 Легенда</h2>
+
+                <p>
+                    Колись давно, коли ще не було Docker і Spring Boot,
+                    існувала лише одна істина — <b>сало</b>.
+                </p>
+
+                <p>
+                    Воно пережило всі фреймворки, всі міграції баз даних
+                    і навіть NullPointerException.
+                </p>
+
+                <p class="text-muted">
+                    Кажуть, що справжній backend developer повинен хоча б раз
+                    оптимізувати CRUD для сала.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FEATURES -->
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h4>🥓 100% Натуральне</h4>
+                        <p>Без JPA багів і без зайвих join'ів</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h4>⚡ Швидкість</h4>
+                        <p>CRUD виконується швидше, ніж компіляція Spring Boot</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h4>🧠 Розумна система</h4>
+                        <p>Faker генерує сало, яке не повторюється (майже)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- QUOTE -->
+    <div class="container mt-5">
+
+        <div class="alert alert-warning text-center shadow">
+            <h5 class="mb-0">
+                “У кожного senior developer є 2 речі: досвід і сало.”
+            </h5>
+        </div>
+
+    </div>
 
 </div>
+
 </body>
 </html>
